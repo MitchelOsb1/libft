@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
+/*   Bsrc: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/21 18:06:21 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/21 19:09:54 by mosborne         ###   ########.fr       */
+/*   Created: 2017/09/21 18:06:21 bsrc mosborne          #+#    #+#             */
+/*   Updated: 2017/09/22 19:59:53 bsrc mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,39 @@
 #include <ctype.h>
 #include <stdio.h>
 
-void    *memmove(void *dst, const void *src, size_t len)
+void    *ft_memmove(void *dst, const void *src, size_t len)
 {
-    char *x = (char *)src;
-    char *y = (char *)dst;
     size_t i;
 
-    i = 0;
     if (dst > src)
     {
-        while (dst)
-        x[i] = y[i - 1];
+        i = len;
+        printf("THis is here\n");
+        while(i-- > 0)
+            ((char *)dst)[i] = ((char *)src)[i];
     }
+    else
+    {
+        i = 0;
+        while (i < len)
+        {
+            printf("I: %zu\n", i);
+            ((char *)dst)[i] = ((char *)src)[i];
+            i++;
+        }
+        ((char *)dst)[i] = '\0';
+    }
+    return (dst);
 }
 
 int main(void)
 {
-    char s1[6] = "string";
-    char s2[6] = "string";
+    char a[64] = "swagboimaster\0";
+    char b[64];
+    char aa[64] = "swagboimaster\0";
+    char bb[64];
 
-    printf("%s", memmove())
+
+    printf("%s\n", memmove(bb, aa, 8));
+        printf("%s %s\n", ft_memmove(b, a, 8), b);
 }
