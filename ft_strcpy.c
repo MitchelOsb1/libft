@@ -6,13 +6,13 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 12:38:03 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/19 16:56:34 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/09/25 16:02:24 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-char	*ft_strcpy(char *s1, char *s2)
+char	*ft_strcpy(char *s1, const char *s2)
 {
 	int i;
 

@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/19 16:33:27 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/26 15:53:21 by mosborne         ###   ########.fr       */
+/*   Created: 2017/10/02 12:38:41 by mosborne          #+#    #+#             */
+/*   Updated: 2017/10/02 13:31:02 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strchr(const char *str, int c)
+void	ft_strclr(char *s)
 {
-	while (*str)
-	{
-		if (*str == c)
-			return ((char *)str);
-		str++;
-	}
-	if (!c)
-		return ((char *)str);
-	return (0);
+	int i;
+
+	i = 0;
+	while (s[i] != -1)
+		s[i++] = '\0';
 }

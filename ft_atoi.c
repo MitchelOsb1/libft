@@ -6,34 +6,35 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 16:26:58 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/21 16:34:41 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/09/26 18:52:43 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-    int i;
-    int sign;
-    int num;
+	int i;
+	int sign;
+	int num;
 
-    i = 0;
-    sign = 1;
-    num = 0;
-    while (str[i] < '0' || str[i] > '9')
-    {
-        if (str[i] == '-' && str[i] == '-1')
-            sign = -1;
-        else if (sign == -1)
-            return (0);
-         i++;
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        num = num * 10 + (str[i] - 48);
-        i++;
-    }
-    return (num * sign);
+	i = 0;
+	sign = 1;
+	num = 0;
+	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n') ||
+		(str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
+		i++;
+	if (str[i] == 45 && sign != -1)
+	{
+		sign = -1;
+		i++;
+	}
+	if (str[i] == 43)
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + (str[i] - 48);
+		i++;
+	}
+	return (num * sign);
 }

@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/19 16:33:27 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/26 15:53:21 by mosborne         ###   ########.fr       */
+/*   Created: 2017/09/27 17:16:18 by mosborne          #+#    #+#             */
+/*   Updated: 2017/09/28 15:38:51 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	while (*str)
+	size_t i;
+	size_t x;
+
+	i = 0;
+	if (!*little)
+		return ((char *)big);
+	while (big[i])
 	{
-		if (*str == c)
-			return ((char *)str);
-		str++;
+		x = 0;
+		while (big[i] == little[x] && big[i] && i < len)
+		{
+			i++;
+			x++;
+		}
+		if (!little[x])
+			return ((char *)&big[i - x]);
+		i = (i - x) + 1;
 	}
-	if (!c)
-		return ((char *)str);
 	return (0);
 }

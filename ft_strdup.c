@@ -6,25 +6,20 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 13:44:51 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/19 17:01:22 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/09/26 18:53:31 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(char *str)
+char	*ft_strdup(const char *str)
 {
-	int i;
-	char *x;
+	char	*x;
+	int		i;
 
-	i = 0;
-	while (str)
-		i++;
-	x = (char *)malloc(sizeof(*str));
-	while (str)
-	{
-		x[i] = str[i];
-		i++;
-	}
-	return (x);
+	i = ft_strlen(str);
+	x = (char *)malloc((i + 1) * sizeof(char));
+	if (x)
+		return (ft_strcpy(x, str));
+	return (NULL);
 }

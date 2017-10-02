@@ -6,13 +6,13 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 14:27:31 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/21 12:37:38 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/09/25 16:06:10 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
+#include "libft.h"
 
-void ft_bzero(void *str, size_t n)
+void	ft_bzero(void *str, size_t n)
 {
-    ft_memset(*str, 0, n);
+	ft_memset(str, 0, n);
 }

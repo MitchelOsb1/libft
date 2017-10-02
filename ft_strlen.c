@@ -6,11 +6,13 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 13:04:54 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/19 17:02:24 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/09/25 16:05:35 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+int	ft_strlen(const char *str)
 {
 	int i;
 

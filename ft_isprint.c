@@ -6,13 +6,15 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 14:23:28 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/21 14:31:02 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/09/25 20:52:19 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isprint(int c)
+#include "libft.h"
+
+int	ft_isprint(int c)
 {
-    if (c >= 40 && c <= 176)
-        return (1);
-    return (0);
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

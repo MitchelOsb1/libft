@@ -6,23 +6,27 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 17:33:58 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/21 16:24:58 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/09/26 18:53:52 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int 	ft_strlen(char *str);
-
-char	*ft_strncat(char *s1, char *s2, size_t num)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	unsigned int i;
-	int x;
+	size_t	i;
+	size_t	x;
 
-	i = ft_strlen(s1);
 	x = 0;
-	while (i < num)
-		s1[i++] = s2[x++];
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	while ((s2[x] != '\0') && (x < n))
+	{
+		s1[i] = s2[x];
+		i++;
+		x++;
+	}
 	s1[i] = '\0';
 	return (s1);
 }
