@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/18 13:04:54 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/25 16:05:35 by mosborne         ###   ########.fr       */
+/*   Created: 2017/10/04 16:41:30 by mosborne          #+#    #+#             */
+/*   Updated: 2017/10/04 16:46:53 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen(const char *s)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 		i++;
 	return (i);
 }

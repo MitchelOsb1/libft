@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/29 15:26:21 by mosborne          #+#    #+#             */
-/*   Updated: 2017/10/04 16:47:05 by mosborne         ###   ########.fr       */
+/*   Created: 2017/10/04 14:11:36 by mosborne          #+#    #+#             */
+/*   Updated: 2017/10/04 16:41:17 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (!ap)
-		return ;
-	free(*ap);
-	*ap = NULL;
+	write(fd, &c, 1);
 }

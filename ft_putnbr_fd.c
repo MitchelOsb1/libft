@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/29 15:26:21 by mosborne          #+#    #+#             */
-/*   Updated: 2017/10/04 16:47:05 by mosborne         ###   ########.fr       */
+/*   Created: 2017/10/04 16:47:54 by mosborne          #+#    #+#             */
+/*   Updated: 2017/10/04 16:48:15 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (!ap)
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
 		return ;
-	free(*ap);
-	*ap = NULL;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
+	}
+	else if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+		ft_putchar_fd(n + 48, fd);
 }

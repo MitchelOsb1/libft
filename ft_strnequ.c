@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/29 15:26:21 by mosborne          #+#    #+#             */
-/*   Updated: 2017/10/04 16:47:05 by mosborne         ###   ########.fr       */
+/*   Created: 2017/10/02 16:30:39 by mosborne          #+#    #+#             */
+/*   Updated: 2017/10/04 16:46:35 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	if (!ap)
-		return ;
-	free(*ap);
-	*ap = NULL;
+	if (!s1 || !s2)
+		return (0);
+	if (!ft_strncmp(s1, s2, n))
+		return (1);
+	return (0);
 }

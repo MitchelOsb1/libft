@@ -6,13 +6,13 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/29 15:37:02 by mosborne          #+#    #+#             */
-/*   Updated: 2017/10/02 12:34:49 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/10/04 16:41:56 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strnew(size_t size)
+char	*ft_strnew(size_t size)
 {
 	char *s1;
 
