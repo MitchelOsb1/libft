@@ -6,7 +6,7 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 16:26:58 by mosborne          #+#    #+#             */
-/*   Updated: 2017/09/26 18:52:43 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/10/05 18:36:23 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_atoi(const char *str)
 		sign = -1;
 		i++;
 	}
-	if (str[i] == 43)
+	else if (str[i] == 43)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{

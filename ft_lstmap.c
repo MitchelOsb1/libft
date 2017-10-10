@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/02 19:41:24 by mosborne          #+#    #+#             */
-/*   Updated: 2017/10/06 18:11:34 by mosborne         ###   ########.fr       */
+/*   Created: 2017/10/06 16:37:01 by mosborne          #+#    #+#             */
+/*   Updated: 2017/10/10 13:40:05 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char			*new;
-	int				x;
-	unsigned int	i;
+	t_list *x;
 
-	if (!s)
-		return (NULL);
-	i = 0;
-	while ((s[i] == ' ') || (s[i] == '\t') || (s[i] == '\n'))
-		i++;
-	x = i;
-	if (s[x] == '\0')
+	if (lst)
 	{
-		new = (char *)malloc(1);
-		*new = '\0';
-		return (new);
+		x = f(lst);
+		x->next = ft_lstmap(lst->next, f);
+		return (x);
 	}
-	while (s[i + 1])
-		i++;
-	while ((s[i] == ' ') || (s[i] == '\t') || (s[i] == '\n'))
-		i--;
-	if (!(new = (ft_strsub(s, x, i - x + 1))))
-		return (NULL);
-	return (new);
+	return (NULL);
 }

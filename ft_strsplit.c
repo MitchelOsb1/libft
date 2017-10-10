@@ -6,70 +6,55 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/27 19:37:57 by mosborne          #+#    #+#             */
-/*   Updated: 2017/10/04 16:52:34 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/10/06 19:03:23 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int    ft_memsize(char const *str, char c)
+static char	*ft_place_words(char const *s, char c, int *newi)
 {
-	int i;
-	int count;
-	int toggle;
-
-	toggle = 0;
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			toggle = 0;
-		else if (!toggle && str[i])
-		{
-			toggle = 1;
-			count++;
-		}
-		i++;
-	}
-	return (count += 1);
-}
-
-int    ft_strsubcount(char const *s, int index, char c)
-{
-	int i;
+	int		i;
+	int		begin;
+	char	*word;
 
 	i = 0;
-	while (s[index] != c && s[index])
-	{
-		index++;
-		i++;
-	}
-	return (i);
-}
-
-char    **ft_strsplit(char const *s, char c)
-{
-	int y;
-	int x;
-	int i;
-	char **new;
-
-	x = 0;
-	i = 0;
-	new = (char **)malloc((ft_memsize(s, c)) * sizeof(char *));
-	if (!new || !ft_memsize(s, c))
+	while (s[*newi] == c && s[*newi] != '\0')
+		(*newi)++;
+	begin = *newi;
+	while (s[*newi] != c && s[*newi] != '\0')
+		(*newi)++;
+	if (!(word = ft_strnew(*newi - begin)))
 		return (NULL);
-	while (s[i])
+	while (begin < *newi)
+		word[i++] = s[begin++];
+	word[i] = '\0';
+	return (word);
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	char	**strings;
+	int		i;
+	int		count;
+	int		k;
+
+	k = 0;
+	count = 0;
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		y = 0;
-		while (s[i] == c)
-			i++;
-		new[x] = (char *)malloc(sizeof(char) * (ft_strsubcount(s, i, c)));
-		while (s[i] != c && s[i])
-			new[x][y++] = s[i++];
-		new[x][y] = '\0';
-		x++;
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			count++;
+		i++;
 	}
-	return (new);
+	i = 0;
+	if (!(strings = (char **)malloc((count + 1) * sizeof(char *))))
+		return (NULL);
+	while (i < count)
+		strings[i++] = ft_place_words(s, c, &k);
+	strings[i] = 0;
+	return (strings);
 }

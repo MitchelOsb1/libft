@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/02 14:47:58 by mosborne          #+#    #+#             */
-/*   Updated: 2017/10/10 14:12:09 by mosborne         ###   ########.fr       */
+/*   Created: 2017/10/04 18:42:06 by mosborne          #+#    #+#             */
+/*   Updated: 2017/10/06 18:11:10 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+char	*ft_itoa(int n)
 {
-	size_t	i;
+	int		sign;
+	int		count;
 	char	*str;
 
-	i = 0;
-	if (!s || !f)
+	count = 1;
+	sign = n;
+	while (sign /= 10)
+		count++;
+	sign = n < 0 ? 1 : 0;
+	count = n < 0 ? count += 1 : count;
+	if (n == -2147483648)
+		return (str = ft_strdup("-2147483648"));
+	str = ft_strnew(count);
+	if (!str)
 		return (NULL);
-	str = (char *)malloc(ft_strlen(s) + 1);
-	if (str)
+	if (sign == 1)
+		str[0] = '-';
+	n = n < 0 ? n *= -1 : n;
+	while (--count >= sign)
 	{
-		while (i < ft_strlen(s))
-		{
-			str[i] = (*f)(s[i]);
-			i++;
-		}
-		str[i] = '\0';
-		return (str);
+		str[count] = n >= 10 ? (n % 10) + 48 : n + 48;
+		n /= 10;
 	}
-	return (0);
+	str[ft_strlen(str)] = '\0';
+	return (str);
 }

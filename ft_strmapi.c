@@ -6,7 +6,7 @@
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 15:10:26 by mosborne          #+#    #+#             */
-/*   Updated: 2017/10/04 16:43:27 by mosborne         ###   ########.fr       */
+/*   Updated: 2017/10/10 14:12:30 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
+	size_t	i;
 	char	*str;
 
 	i = 0;
+	if (!s || !f)
+		return (NULL);
 	str = (char *)malloc(ft_strlen(s) + 1);
 	if (str)
 	{

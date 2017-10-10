@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosborne <mosborne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/02 19:41:24 by mosborne          #+#    #+#             */
-/*   Updated: 2017/10/06 18:11:34 by mosborne         ###   ########.fr       */
+/*   Created: 2017/10/06 19:01:31 by mosborne          #+#    #+#             */
+/*   Updated: 2017/10/06 19:01:33 by mosborne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	char			*new;
-	int				x;
-	unsigned int	i;
+	t_list *new;
 
-	if (!s)
-		return (NULL);
-	i = 0;
-	while ((s[i] == ' ') || (s[i] == '\t') || (s[i] == '\n'))
-		i++;
-	x = i;
-	if (s[x] == '\0')
+	if (!(new = (t_list *)malloc(sizeof(t_list))))
+		return (0);
+	if (!content)
 	{
-		new = (char *)malloc(1);
-		*new = '\0';
-		return (new);
+		new->content = NULL;
+		new->content_size = 0;
 	}
-	while (s[i + 1])
-		i++;
-	while ((s[i] == ' ') || (s[i] == '\t') || (s[i] == '\n'))
-		i--;
-	if (!(new = (ft_strsub(s, x, i - x + 1))))
-		return (NULL);
+	else
+	{
+		if (!(new->content = malloc(content_size)))
+			return (NULL);
+		ft_memcpy(new->content, content, content_size);
+		new->content_size = content_size;
+	}
+	new->next = NULL;
 	return (new);
 }
